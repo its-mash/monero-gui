@@ -21,7 +21,7 @@ jobs:
       run: build/release/bin/monero-wallet-gui.app/Contents/MacOS/monero-wallet-gui --test-qml
 
   build-ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: mash-linux
     steps:
     - uses: actions/checkout@v1
       with:
@@ -45,7 +45,7 @@ jobs:
       run: xvfb-run -a build/release/bin/monero-wallet-gui --test-qml
 
   build-windows:
-    runs-on: windows-latest
+    runs-on: mash-windows
     defaults:
       run:
         shell: msys2 {0}
@@ -97,7 +97,7 @@ jobs:
         path: build/bin/monero-wallet-gui.tar
 
   docker-linux-static:
-    runs-on: ubuntu-20.04
+    runs-on: mash-linux
     steps:
     - uses: actions/checkout@v1
       with:
@@ -144,7 +144,7 @@ jobs:
     - name: free up diskspace
       run: ${{env.FREE_DISKSPACE}}
     - name: prepare build environment
-      run: docker build --tag monero:build-env-windows --build-arg THREADS=3 --file Dockerfile.windows .
+      run: docker build --tag monero:build-env-windows --build-arg THREADS=7 --file Dockerfile.windows .
     - name: build
       run: docker run --rm -v /home/runner/work/monero-gui/monero-gui:/monero-gui -w /monero-gui monero:build-env-windows sh -c 'make depends root=/depends target=x86_64-w64-mingw32 tag=win-x64 -j3'
     - name: sha256sum
