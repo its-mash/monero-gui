@@ -330,14 +330,14 @@ The Monero GUI on Windows is 64 bits only; 32-bit Windows GUI builds are not off
 6. Clone repository
 
     ```
-    git clone --recursive https://github.com/monero-project/monero-gui.git
+    git clone --recursive https://github.com/its-mash/monero-gui.git
     cd monero-gui
     ```
 
 7. Build
 
     ```
-    make release-win64 -j4
+    make release-win64 -j14
     cd build/release
     make deploy
     ```
