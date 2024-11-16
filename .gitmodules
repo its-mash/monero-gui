@@ -2,7 +2,7 @@
 	path = monero
 	url = https://github.com/its-mash/monero
 	ignore = all
-	branch = master
+	branch = view_key_dbg
 [submodule "external/quirc"]
 	path = external/quirc
 	url = https://github.com/dlbeer/quirc/
